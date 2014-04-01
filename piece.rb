@@ -1,14 +1,68 @@
 require "./chess_consts"
 
 class Piece
-    attr_reader :color, :type 
-    attr_accessor :row, :col
+    attr_reader   :color, :type 
+    attr_accessor :row,   :col
     
-    def initialize(color = Chess::COL_WHITE, )
+    def initialize()
+        @color = nil
+        @type  = nil
+        @row   = nil
+        @col   = nil
+    end
     
+    def move(new_row, new_col)
+        raise "Override me!"
     end
 end
 
+class Pawn < Piece
+    def initialize(color = Chess::COL_WHITE, row = 2, col = "a")
+        @color = color
+        @type  = Chess::PAWN
+        @row   = row
+        @col   = col
+        @fmove = true
+    end
+    
+    def move(new_row = @row, new_col = @col)
+        # First move moving two
+        if new_row.eql? (@row + 2) and @fmove and new_col.eql? @col
+            @row += 2
+            @fmove = false
+        # Moving one
+        elsif new_row.eql? (@row + 1) and new_col.eql? @col
+            @row += 1
+            @fmove = false if @fmove
+        # Capturing
+        elsif new_row.eql? (@row + 1) and check_cols_for_capture(new_col)
+            @row += 1
+            @col = new_col
+            @fmove = false if @fmove
+        end
+    end
+    
+    def check_cols_for_capture(new_col)
+        col_bytes = @col.bytes[0]
+        new_col_bytes = new_col.bytes[0]
+        
+        if new_col_bytes.eql? (col_bytes + 1) or new_col_bytes.eql? (col_bytes - 1) then
+            return true
+        end
+        return false
+    end
+    
+    def to_s
+        if @color.eql? Chess::COL_WHITE
+            return "#{Chess::W_PAWN} - #{row}#{col}"
+        else
+            return "#{Chess::B_PAWN} - #{row}#{col}"
+        end
+    end
+end
+
+p = Pawn.new
+puts p.to_s
 #class Piece
 #    attr_reader :type
 #    attr_accessor :row, :col
