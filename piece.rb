@@ -13,4 +13,52 @@ class Piece
     def to_s
         "#{@type} - #{col}#{row}"
     end
+
+    def is_pawn?
+        if @type.eql? Chess::B_PAWN or @type.eql? Chess::W_PAWN then
+            return true
+        else
+            return false
+        end
+    end
+
+    def is_rook?
+        if @type.eql? Chess::B_ROOK or @type.eql? Chess::W_ROOK then
+            return true
+        else
+            return false
+        end
+    end
+
+    def is_knight?
+        if @type.eql? Chess::B_KNIGHT or @type.eql? Chess::W_KNIGHT then
+            return true
+        else
+            return false
+        end
+    end
+
+    def is_bishop?
+        if @type.eql? Chess::B_BISHOP or @type.eql? Chess::W_BISHOP then
+            return true
+        else
+            return false
+        end
+    end
+
+    def is_queen?
+        if @type.eql? Chess::B_QUEEN or @type.eql? Chess::W_QUEEN then
+            return true
+        else
+            return false
+        end
+    end
+
+    def is_king?
+        if @type.eql? Chess::B_KING or @type.eql? Chess::W_KING then
+            return true
+        else
+            return false
+        end
+    end
 end
