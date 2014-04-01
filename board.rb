@@ -38,7 +38,13 @@ class Board
         return ret
     end
 
-    
+    def get_white_pieces
+        return @pieces.select{|p| p.is_white?}
+    end    
+
+    def get_black_pieces
+        return @pieces.select{|p| p.is_black?}
+    end
 
     def to_s
         ret = ""
