@@ -61,4 +61,21 @@ class Piece
             return false
         end
     end
+
+    def is_white?
+        white_types = [
+            Chess::W_KING,
+            Chess::W_QUEEN,
+            Chess::W_ROOK,
+            Chess::W_BISHOP,
+            Chess::W_KNIGHT,
+            Chess::W_PAWN
+        ]
+        if white_types.include? @type then return true
+        else return false end
+    end
+
+    def is_black?
+        !is_white?
+    end
 end

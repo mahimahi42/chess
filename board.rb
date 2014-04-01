@@ -38,6 +38,8 @@ class Board
         return ret
     end
 
+    
+
     def to_s
         ret = ""
         @pieces.each do |p|
