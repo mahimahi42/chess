@@ -1,4 +1,14 @@
 module Chess
+    COL_WHITE = "w"
+    COL_BLACK = "b"
+    
+    KING   = "king"
+    QUEEN  = "queen"
+    ROOK   = "rook"
+    BISHOP = "bishop"
+    KNIGHT = "knight"
+    PAWN   = "pawn"
+    
     W_KING   = "\u2654"
     W_QUEEN  = "\u2655"
     W_ROOK   = "\u2656"
