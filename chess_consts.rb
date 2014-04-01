@@ -11,4 +11,6 @@ module Chess
     B_BISHOP = "\u265D"
     B_KNIGHT = "\u265E"
     B_PAWN   = "\u265F"
+
+    ASCII_ROW = "+-+-+-+-+-+-+-+-+\n"
 end

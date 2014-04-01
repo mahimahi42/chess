@@ -46,10 +46,23 @@ class Board
         return @pieces.select{|p| p.is_black?}
     end
 
+    def get_piece_at(row, col)
+        @pieces.each do |piece|
+            return piece if piece.row.eql? row and piece.col.eql? col
+        end
+        return nil
+    end
+
     def to_s
         ret = ""
-        @pieces.each do |p|
-            ret << "#{p.to_s}\n"
+        ret << Chess::ASCII_ROW
+        (1..8).each do |row|
+            ("a".."h").each do |col|
+                piece = get_piece_at(row, col)
+                if not piece.nil? then ret << "|#{piece.type}"
+                else ret << "| " end
+            end
+            ret << "|\n#{Chess::ASCII_ROW}"
         end
         return ret
     end
