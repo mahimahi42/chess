@@ -20,9 +20,12 @@ class Pawn < Piece
     def initialize(color = Chess::COL_WHITE, row = 2, col = "a")
         @color = color
         @type  = Chess::PAWN
-        @row   = row
         @col   = col
         @fmove = true
+        case @color
+            when Chess::COL_WHITE then @row = 2
+            when Chess::COL_BLACK then @row = 7
+        end
     end
     
     def move(new_row = @row, new_col = @col)
@@ -61,7 +64,9 @@ class Pawn < Piece
     end
 end
 
-p = Pawn.new
+p = Pawn.new(Chess::COL_BLACK)
+puts p.to_s
+p.col = "f"
 puts p.to_s
 #class Piece
 #    attr_reader :type
